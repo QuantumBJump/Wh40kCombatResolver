@@ -1,0 +1,45 @@
+==== PHASE 1 - OVERWATCH =====
+
+overwatch?
+if overwatch = true {
+	enemy T?
+	enemy AP?
+	shotStats = [[no of shots, no of hits, S, AP]]
+	shotType = 0
+	do {
+		shotStats[shotType[0]] = user input //input no of shots
+		shotStats[shotType[2]] = user input //input S of shots
+		shotStats[shotType[3]] = user input //input AP of shots
+		more types = user input
+		if (moreTypes = true) {
+			shotType++
+		}
+	} while moreTypes = true
+
+
+	//calculate no. of hits for each shot type
+	for each type of shot
+		for no. of shots
+			if rand(1,6) == 6
+				no of hits++
+
+	//calculate no of wounds for each hit
+	initial wounds = 0
+	for each shot type
+		for each hit
+			if wound
+				if AP > save
+					if rand(1,6) < save
+						wounds++
+				else if invuln != 0
+					if rand(1,6) < invuln
+						wounds++
+				else
+					wounds++
+
+
+==== PHASE 2 - CHARGE ====
+
+is the charge successful?
+
+==== PHASE 3 - BHAKDFLJSALKDSFOAPHFE;A ====
