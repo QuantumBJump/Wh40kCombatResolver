@@ -1,11 +1,13 @@
 var main = function () {
-    var overwatchPhase = function() {
+    function overwatchPhase() {
         // VARIABLE DECLARATION
-        var doOverwatch = prompt("Will the unit being charged perform overwatch?");
-        var toughness = prompt("What is the enemy's Toughness?");
-        var save = prompt("Enemy armour save (0 means no save)");
-        var invuln = prompt("Enemy invulnerable save (0 means no save)");
-        var cover = prompt("Enemy cover save (0 means no save)");
+        var toughness = document.getElementById("toughness").value;
+		console.log(toughness);
+        var save = document.getElementById("save").value;
+        var invuln = document.getElementById("invuln").value;
+        var cover = document.getElementById("cover").value;
+		var gunTypes = document.getElementById("gunTypes").value;
+		console.log(gunTypes);
         var wounds = 0;
         var shotStats = []; //an array containing the stats of all shots fired by the overwatching unit
         var diceRoll = function() {
@@ -58,23 +60,15 @@ var main = function () {
             };
         };
         
-        
         //gather the stats for the weapons being fired
-        var shotType = 0;
-        do {
-            var again = false;
-            shotStats[shotType] = gunStats().populate();
-            var moreTypes = prompt("Are any further weapon types being fired? (Y/N)");
-            if (moreTypes === "Y") {
-                again = true;
-                shotType++;
-            }
-        } while (again === true);
-        
+		for (i = 0; i < gunTypes; i++) {
+			shotStats[i] = gunStats().populate();
+		};
+		
         //calculate number of hits for each shot type
         for (i = 0; i < shotStats.length; i++) { // for each type of shot being fired
             for (j = 0; j < shotStats[i].shotNumber; j++) { // for each shot fired of that type
-                if (diceRoll() >= 2) {
+                if (diceRoll() >= 6) {
                     shotStats[i].hitNumber++;
                 };
             };
@@ -89,10 +83,25 @@ var main = function () {
                 };
             };
         };
+		
+		alert(wounds + " wounds suffered");
+		$("#overwatchContainer").addClass("hidden");
     };
     
-    overwatchPhase();
+    //overwatchPhase();
+	
+	$("#overwatchCheckbox").click(function() {
+		if(document.getElementById("overwatchCheckbox").checked == true) {
+			$("#overwatchForm").removeClass("hidden");
+		} else {
+			$("#overwatchForm").addClass("hidden");
+		}
+	});
     
+	$("#overwatchButton").click(function() {
+		overwatchPhase();
+	});
+	
 };
 
 $(document).ready(main);

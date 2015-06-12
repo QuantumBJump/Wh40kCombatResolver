@@ -6,7 +6,21 @@
     </head>
     
     <body>
-        
+		<div id="overwatchContainer">
+        	<form>
+				<input id="overwatchCheckbox" type="checkbox" value="false">Is the unit performing overwatch?
+			</form>
+		
+			<form id="overwatchForm" class="hidden">
+				Enemy Toughness: <input type="number" id="toughness" min="0">
+				<h5>Enemy Saves (0 means no save of that type)</h5>
+				Enemy Armour Save: <input type="number" id="save" min="0" max="6" value="0"><br>
+				Enemy Invulnerable Save: <input type="number" id="invuln" min="0" max="6" value="0"><br>
+				Enemy Cover Save: <input type="number" id="cover" min="0" max="6" value="0"><br><br>
+				Number of Different Weapon Types Being Fired: <input type="number" id="gunTypes" min="1" value="1"><br><br>
+				<input type="button" value="Calculate Wounds" id="overwatchButton">
+			</form>
+		</div>
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script src="app.js"></script>
